@@ -1,0 +1,51 @@
+/*
+  Токены дизайна «Дом цветов»:
+  - фон тёплая бумага, а не белый/розовый — читается как флористический каталог,
+    а не дежурный e-commerce
+  - serif (Fraunces) только для названий букетов и заголовков — сдержанно, без вензелей
+  - sans (Inter) для всего интерфейса: кнопки, цены, категории
+  - акцент — тёплый коралл, используется точечно (цена, кнопка «в корзину»)
+  - карточка категории — как бирка растения; цена — как бирка флориста на скотче
+*/
+:root {
+  --paper: #faf6ef;
+  --ink: #21261f;
+  --ink-muted: #767c6f;
+  --forest: #1f3a2e;
+  --sage: #7c9885;
+  --sage-light: #e4e9df;
+  --coral: #e8664a;
+  --coral-dark: #c94f36;
+  --line: #ddd6c7;
+
+  --font-display: "Fraunces", Georgia, serif;
+  --font-body: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  font-family: inherit;
+}
+
+a {
+  color: inherit;
+}
+
+/* Убираем анимации у тех, кто просил их не показывать */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
