@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Дом цветов — админ-панель</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <!-- Экран входа -->
+  <section id="login-screen" class="login-wrap hidden">
+    <form id="login-form" class="login-card" autocomplete="off">
+      <h1>🌸 Дом цветов</h1>
+      <p class="muted">Админ-панель каталога</p>
+      <label>Логин
+        <input type="text" id="login-username" required placeholder="admin" />
+      </label>
+      <label>Пароль
+        <input type="password" id="login-password" required placeholder="••••••••" />
+      </label>
+      <div id="login-error" class="error hidden"></div>
+      <button type="submit" class="btn btn-primary w-full">Войти</button>
+    </form>
+  </section>
+
+  <!-- Основной экран -->
+  <div id="app-screen" class="hidden">
+    <header class="topbar">
+      <span class="logo">🌸 Дом цветов · Админ</span>
+      <div class="topbar-right">
+        <span id="whoami" class="muted"></span>
+        <button id="logout-btn" class="btn btn-ghost">Выйти</button>
+      </div>
+    </header>
+
+    <main class="content">
+      <div class="toolbar">
+        <h2>Товары каталога</h2>
+        <button id="add-product-btn" class="btn btn-primary">+ Добавить товар</button>
+      </div>
+      <div id="products-grid" class="grid"></div>
+      <p id="empty-hint" class="muted hidden">Пока нет ни одного товара — добавьте первый.</p>
+    </main>
+  </div>
+
+  <!-- Модальное окно товара -->
+  <div id="modal-backdrop" class="modal-backdrop hidden">
+    <div class="modal" role="dialog" aria-modal="true">
+      <div class="modal-header">
+        <h3 id="modal-title">Товар</h3>
+        <button id="modal-close" class="icon-btn" title="Закрыть">✕</button>
+      </div>
+      <form id="product-form">
+        <input type="hidden" id="f-id" />
+        <div class="form-row two">
+          <label>Название *
+            <input type="text" id="f-title" required maxlength="200" />
+          </label>
+          <label>Категория
+            <input type="text" id="f-category" maxlength="100" placeholder="Например: Премиум" />
+          </label>
+        </div>
+        <label>Описание
+          <textarea id="f-description" rows="3" maxlength="1000"></textarea>
+        </label>
+        <div class="form-row two">
+          <label>Стоимость, ₽ *
+            <input type="number" id="f-price" min="0" step="1" required />
+          </label>
+          <label class="check-label">
+            <input type="checkbox" id="f-active" checked />
+            Показывать в каталоге
+          </label>
+        </div>
+        <label>Ссылка на картинку (URL)
+          <input type="url" id="f-photo-url" maxlength="500" placeholder="https://..." />
+        </label>
+        <div class="upload-row">
+          <label class="btn btn-secondary file-btn">
+            Загрузить файл…
+            <input type="file" id="f-photo-file" accept=".jpg,.jpeg,.png,.gif,.webp" hidden />
+          </label>
+          <span id="upload-status" class="muted"></span>
+        </div>
+        <div class="preview-box">
+          <img id="photo-preview" alt="Превью картинки" class="hidden" />
+          <span id="no-photo" class="muted">Картинка не выбрана</span>
+        </div>
+        <div id="form-error" class="error hidden"></div>
+        <div class="modal-footer">
+          <button type="button" id="delete-btn" class="btn btn-danger hidden">Удалить товар</button>
+          <button type="submit" class="btn btn-primary">Сохранить</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div id="toast" class="toast hidden"></div>
+  <script src="app.js"></script>
+</body>
+</html>
