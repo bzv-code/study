@@ -31,7 +31,7 @@ from config import (
     UPLOADS_DIR,
 )
 from models import Base, LoginAttempt, Product
-
+1
 WEB_DIR = Path(__file__).resolve().parent.parent / "web"
 
 engine = create_engine(f"sqlite:///{DATABASE_PATH}", connect_args={"check_same_thread": False})
